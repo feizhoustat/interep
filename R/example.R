@@ -6,7 +6,7 @@
 #' @keywords datasets
 #' @name dat
 #' @usage data("dat")
-#' @format Each data consists of four components: e, z, y and index; index shows the location of the true coefficients used to generate y.
+#' @format Each data consists of six components: e, z, x, y, beta and index; index shows the location of the true coefficients used to generate y.
 #' @examples
 #' data("dat")
 NULL

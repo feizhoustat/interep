@@ -1,16 +1,5 @@
-#' This function obtains the score function and its derivative
-#' @importFrom MASS ginv mvrnorm
-#' @param n the sample size.
-#' @param k the number of repeated measurement.
-#' @param y the longitudinal response.
-#' @param x a matrix of predictors, consisting of omics and environment factors, as well as their interactions. In the case study,
-#'  the omics measurements are lipidomics data.
-#' @param p number of predictors.
-#' @param response type of the longitudinal response, the default is continuous.
-#' @param beta a coefficient vector.
-#' @param Rhat the correlation matrix.
-#' @return the score function and its derivative.
-#' @export
+#' @importFrom stats gaussian
+#' @importFrom MASS ginv
 ScoreU <- function(n,k,y,x,p,response="continuous",beta,Rhat){
   #n=as.numeric(length(y)/k)
   aindex=cumsum(k)

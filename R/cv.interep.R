@@ -1,5 +1,6 @@
 #' This function does k-fold cross-validation for interep and returns the optimal value of lambda.
-#'
+#' @importFrom stats gaussian
+#' @importFrom MASS ginv
 #' @param e matrix of environment factors.
 #' @param z matrix of omics factors. In the case study, the omics measurements are lipidomics data.
 #' @param y the longitudinal response.

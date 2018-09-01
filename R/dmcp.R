@@ -9,6 +9,11 @@
 #' Published studies suggest experimenting with a few values, such as 1.8, 3, 4.5, 6, and 10, then fixing its value. In our numerical
 #' study, we have examined this sequence and found that the results are not sensitive to the choice of value of \eqn{\gamma},
 #' and set the value at 3. In practice, to be prudent, values other than 3 should also be investigated.
+#'
+#' @examples
+#' theta=runif(20,-5,5)
+#' lambda=1
+#' dmcp(theta,lambda,gamma=3)
 #' @export
 
 dmcp <- function(theta,lambda,gamma=3){

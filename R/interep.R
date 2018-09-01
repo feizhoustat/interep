@@ -3,7 +3,8 @@
 #' This function makes predictions for generalized estimating equation with a given value of lambda.
 #' Typical usage is to have the cv.interep function compute the optimal lambda, then provide it to
 #' the interep function.
-#'
+#' @importFrom stats gaussian
+#' @importFrom MASS ginv
 #' @param e matrix of environment factors.
 #' @param z matrix of omics factors. In the case study, the omics measurements are lipidomics data.
 #' @param y the longitudinal response.
@@ -41,6 +42,7 @@
 #' \href{https://doi.org/10.1007/s00439-013-1350-z}{\emph{Human Genetics}, 132 (12): 1413–1425}
 #'
 #' @examples
+#' ptm <- proc.time()
 #' data("dat")
 #' e=dat$e
 #' z=dat$z
@@ -52,6 +54,7 @@
 #' tp = length(intersect(index, pos))
 #' fp = length(pos) - tp
 #' list(tp=tp, fp=fp)
+#' proc.time() - ptm
 #'
 #' @export
 
@@ -78,7 +81,6 @@ interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=1,
   x1=data.matrix(x1)
   lasso.cv <- glmnet::cv.glmnet(x1,y[,3],alpha=alpha.i,nfolds=5)
   alpha <- lasso.cv$lambda.min/10  # lambda in the notes
-  # alpha <- 0.5
   lasso.fit <- glmnet::glmnet(x1,y[,3],family="gaussian",alpha=alpha.i,nlambda=100)
   beta.new <- as.vector(stats::predict(lasso.fit, s=alpha, type="coefficients"))[-1]
 
@@ -86,7 +88,7 @@ interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=1,
   data=reformat(k,y,x)
   y=data$y
   x=data$x
-  id=data$id
+  #id=data$id
 
   p=dim(x)[2]
   k=rep(k,n)

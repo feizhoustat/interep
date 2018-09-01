@@ -1,11 +1,18 @@
-#' This function reformats the longituinal data (wide to long format)
+#' This function changes the format of the longitudinal data from wide format to long format
 #'
 #' @param k the number of repeated measurement.
 #' @param y the longitudinal response.
-#' @param x a matrix of predictors, consisting of omics and environment factors, as well as their interactions. In the case study,
-#'  the omics measurements are lipidomics data.
-#' @return the long format of the longitudinal data.
+#' @param x a matrix of predictors, consisting of omics and environment factors, as well as their interactions. In
+#' the case study, the omics measurements are lipidomics data.
+#'
+#' @examples
+#' data("dat")
+#' y=dat$y
+#' x=dat$x
+#' k=dat$k
+#' reformat(k,y,x)
 #' @export
+
 
 reformat <- function(k,y,x){
   n=dim(y)[1]
