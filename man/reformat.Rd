@@ -2,7 +2,7 @@
 % Please edit documentation in R/reformat.R
 \name{reformat}
 \alias{reformat}
-\title{This function reformats the longituinal data (wide to long format)}
+\title{This function changes the format of the longitudinal data from wide format to long format}
 \usage{
 reformat(k, y, x)
 }
@@ -11,12 +11,16 @@ reformat(k, y, x)
 
 \item{y}{the longitudinal response.}
 
-\item{x}{a matrix of predictors, consisting of omics and environment factors, as well as their interactions. In the case study,
-the omics measurements are lipidomics data.}
-}
-\value{
-the long format of the longitudinal data.
+\item{x}{a matrix of predictors, consisting of omics and environment factors, as well as their interactions. In
+the case study, the omics measurements are lipidomics data.}
 }
 \description{
-This function reformats the longituinal data (wide to long format)
+This function changes the format of the longitudinal data from wide format to long format
+}
+\examples{
+data("dat")
+y=dat$y
+x=dat$x
+k=dat$k
+reformat(k,y,x)
 }

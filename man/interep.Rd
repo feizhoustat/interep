@@ -44,6 +44,7 @@ When dealing with predictors with both main effects and interactions, this funct
 \eqn{\lambda_{1}} and \eqn{\lambda_{2}}; when there are only main effects in the predictors, this function only requires \eqn{\lambda_{1}},
 }
 \examples{
+ptm <- proc.time()
 data("dat")
 e=dat$e
 z=dat$z
@@ -55,6 +56,7 @@ pos = which(b != 0)
 tp = length(intersect(index, pos))
 fp = length(pos) - tp
 list(tp=tp, fp=fp)
+proc.time() - ptm
 
 }
 \references{

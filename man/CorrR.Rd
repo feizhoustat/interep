@@ -9,8 +9,8 @@ CorrR(y, x, beta, n, k, corre)
 \arguments{
 \item{y}{the longitudinal response.}
 
-\item{x}{a matrix of predictors, consisting of omics and environment factors, as well as their interactions. In the case study,
-the omics measurements are lipidomics data.}
+\item{x}{a matrix of predictors, consisting of omics and environment factors, as well as their interactions. In
+the case study, the omics measurements are lipidomics data.}
 
 \item{beta}{the coefficient vector.}
 
@@ -18,12 +18,26 @@ the omics measurements are lipidomics data.}
 
 \item{k}{the number of repeated measurement.}
 
-\item{corre}{the working correlation structure that is used in the estimation algorithm. interep provides three choices for the
-working correlation structure: "AR-1", "independece" and "exchangeable".}
+\item{corre}{the working correlation structure that is used in estimation algorithm. interep provides three choices
+for the working correlation structure: "AR-1", "independence" and "exchangeable".}
 }
 \value{
 the correlation matrix.
 }
 \description{
 This function obtains the correlation matrix of longitudinal data
+}
+\examples{
+data("dat")
+y=dat$y
+n=dim(y)[1]
+x=dat$x
+k=dat$k
+data=reformat(k,y,x)
+y=data$y
+x=data$x
+beta=dat$beta
+corre="AR-1"
+k=rep(dat$k,n)
+CorrR(y,x,beta,n,k,corre)
 }
