@@ -64,8 +64,16 @@ set.seed(123)
   y = y + error
   index=c(1,2,3,4,6,8,11,16,(p+q+2):(p+q+4),(p+5*q+2):(p+5*q+4),(p+10*q+2):(p+10*q+4))
   lam1=1
-  lam2=0.9
-  dat = list(y=y,e=x[,c(1:q)],z=x[,c((q+1):(p+q))],index=index,lam1=lam1,lam2=lam2)
+  lam2=0.7
+
+  x1=cbind(data.frame(rep(1,n)),x)
+  x1=data.matrix(x1)
+  lasso.cv <- glmnet::cv.glmnet(x1,y[,3],alpha=1,nfolds=5)
+  alpha <- lasso.cv$lambda.min/10  # lambda in the notes
+  lasso.fit <- glmnet::glmnet(x1,y[,3],family="gaussian",alpha=1,nlambda=100)
+  beta.new <- as.vector(stats::predict(lasso.fit, s=alpha, type="coefficients"))[-1]
+
+  dat = list(y=y,e=x[,c(1:q)],z=x[,c((q+1):(p+q))],x=x,k=k,beta=beta.new,index=index,lam1=lam1,lam2=lam2)
 
 
 
