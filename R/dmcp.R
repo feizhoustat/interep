@@ -23,6 +23,6 @@ dmcp <- function(theta,lambda,gamma=3){
   #create vector of zeros
   b1<-rep(0,p)
   #if theta is less than gamma*lambda set it to 1
-  b1[abs(theta)<(gamma*lambda)]<-1
+  b1[abs(theta)<=(gamma*lambda)]<-1
   (lambda-theta/gamma)*b1
 }
