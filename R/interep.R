@@ -121,7 +121,6 @@ interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=1,
         sub=j
         x.sub=x.mcp[,sub]
         beta0=beta.mcp[sub]
-        kj=t(x.sub)%*%x.sub/n
         norm = sqrt(mean((x.sub*beta0)^2))
         E.mcp[j]=dmcp(abs(as.vector(beta0)),lam1)/(abs(as.vector(norm))+eps)
       }
