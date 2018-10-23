@@ -74,7 +74,7 @@ interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=1,
       x=cbind(x,e[,j]*z[,i])
     }
   }
-x=scale(x)
+  x=scale(x)
   #==========================================find initial values for beta using glmnet==========================#
 
   x1=cbind(data.frame(rep(1,n)),x)
