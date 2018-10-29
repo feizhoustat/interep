@@ -92,8 +92,6 @@ interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=1,
 
   p=dim(x)[2]
   k=rep(k,n)
-  aindex=cumsum(k)
-  index=c(0,aindex[-length(aindex)])
   eps=0.001
   converge=F
   iter=0
