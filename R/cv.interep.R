@@ -82,8 +82,6 @@ cv.interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=
 
 
   k=rep(k,n)
-  aindex=cumsum(k)
-  index=c(0,aindex[-length(aindex)])
   n.train=(nfolds-1)/nfolds*n
   eps=0.001
 
@@ -93,7 +91,7 @@ cv.interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=
   else if (response==NULL){
     family = gaussian(link = "identity")
   }
-  #pay attention to this part
+
   lam1.min <- -1
   lam2.min <- -1
   cv.min <- Inf
@@ -104,8 +102,6 @@ cv.interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=
 
       lam1=lambda1[l1]
       for (l2 in 1:ll) {
-
-        #lam2=lam1*t12
         lam2=lambda2[l2]
 
         sse=0
