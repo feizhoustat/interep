@@ -56,7 +56,7 @@ cv.interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=
       x=cbind(x,e[,j]*z[,i])
     }
   }
-
+  x=scale(x)
   #==========================================find initial values for beta using glmnet==========================#
 
   x1=cbind(data.frame(rep(1,n)),x)
@@ -99,7 +99,6 @@ cv.interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=
   #=========================================GEE MCP group MCP======================================#
   if(q>1){
     for (l1 in 1:l) {
-
       lam1=lambda1[l1]
       for (l2 in 1:ll) {
         lam2=lambda2[l2]
@@ -180,7 +179,6 @@ cv.interep <- function(e, z, y, response="continuous", initiation=NULL, alpha.i=
   #=========================================GEE MCP ======================================#
   else if(q==1){
     for (l1 in 1:l) {
-      #lam1=0.85
       lam1=lambda1[l1]
 
       sse=0
