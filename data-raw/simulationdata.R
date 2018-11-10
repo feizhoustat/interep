@@ -63,8 +63,8 @@ set.seed(123)
 
   y = y + error
   index=c(1,2,3,4,6,8,11,16,(p+q+2):(p+q+4),(p+5*q+2):(p+5*q+4),(p+10*q+2):(p+10*q+4))
-  lam1=1
-  lam2=0.7
+  lam1=0.45
+  lam2=1
 
   x1=cbind(data.frame(rep(1,n)),x)
   x1=data.matrix(x1)
