@@ -2,10 +2,9 @@
 % Please edit documentation in R/cv.interep.R
 \name{cv.interep}
 \alias{cv.interep}
-\title{This function does k-fold cross-validation for interep and returns the optimal value of lambda.}
+\title{k-folds cross-validation for interep}
 \usage{
-cv.interep(e, z, y, response = "continuous", initiation = NULL,
-  alpha.i = 1, lambda1, lambda2, nfolds, maxits = 30, corre)
+cv.interep(e, z, y, beta, lambda1, lambda2, nfolds, corre, maxits)
 }
 \arguments{
 \item{e}{matrix of environment factors.}
@@ -14,13 +13,7 @@ cv.interep(e, z, y, response = "continuous", initiation = NULL,
 
 \item{y}{the longitudinal response.}
 
-\item{response}{type of the longitudinal response, the default is continuous.}
-
-\item{initiation}{the method for iniating the coefficient vector.  The default is lasso.}
-
-\item{alpha.i}{the elastic-net mixing parameter.  The program adopts the elastic-net to choose initial values of the coefficient vector.
-alpha.i is the elastic-net mixing parameter, with 0 \eqn{\le} alpha.i \eqn{\le} 1.  alpha.i=1 is the lasso penalty, and alpha.i=0 is the ridge penalty.
-The default is 1.  If the user chooses a method other than elastic-net to initialize coefficients, alpha.i will be ignored.}
+\item{beta}{the intial value for the coefficient vector.}
 
 \item{lambda1}{a user-supplied sequence of \eqn{\lambda_{1}} values, which serves as a tuning parameter for individual predictors.}
 
@@ -28,10 +21,10 @@ The default is 1.  If the user chooses a method other than elastic-net to initia
 
 \item{nfolds}{the number of folds for cross-validation.}
 
-\item{maxits}{the maximum number of iterations that is used in the estimation algorithm.  The default value is 30.}
-
 \item{corre}{the working correlation structure that is used in the estimation algorithm. interep provides three choices for the
-working correlation structure: "AR-1", "independece" and "exchangeable".}
+working correlation structure: "a" as AR-1", "i" as "independence" and "e" as "exchangeable".}
+
+\item{maxits}{the maximum number of iterations that is used in the estimation algorithm.}
 }
 \value{
 an object of class "cv.interep" is returned, which is a list with components:
@@ -47,7 +40,7 @@ When dealing with predictors with both main effects and interactions, this funct
 which is the optimal tuning parameter for individual predictors containing main effects.
 }
 \references{
-Zhou, F., Wang, W., Jiang, Y. and Wu, C. (2018+). Variable selection for interactions in longitudinal lipidomics studies.
+Zhou, F., Ren, J., Li X., Wang, W., Jiang, Y. and Wu, C. (2018+). Variable selection for interactions in longitudinal lipidomics studies.
 
 Wu, C., Zhong, P. & Cui, Y. (2018). Additive varying-coefficient model for nonlinear gene-environment interactions.
 \href{https://doi.org/10.1515/sagmb-2017-0008}{\emph{Statistical Applications in Genetics and Molecular Biology}, 17(2)}
