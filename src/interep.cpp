@@ -97,7 +97,6 @@ arma::vec interep(arma::mat& e, arma::mat& z, arma::mat& y0, arma::vec& beta, do
     }
   }
 
-  //for(int i=0; i<(x0.n_cols); i++){
   for(int i=0; i<(q+p1*(q+1)); i++){
     for(int j=0; j<n; j++){
       a(j)=x0(j,i);
@@ -114,8 +113,6 @@ arma::vec interep(arma::mat& e, arma::mat& z, arma::mat& y0, arma::vec& beta, do
   int p=x.n_cols;
   arma::vec k(n);
   k.fill(k0);
-
- //std::cout << k << std::endl;
   float diff,
         eps=0.001;
   bool converge=false;
@@ -160,7 +157,6 @@ arma::vec interep(arma::mat& e, arma::mat& z, arma::mat& y0, arma::vec& beta, do
     Rcpp::List Score=ScoreU(n,k,y,x,p,beta,Rhat);
     arma::vec U=Score["U"];
     arma::mat qU=Score["qU"];
-    //std::cout << U << endl;
     for (int j=(q+1); j<(p1+q+1); j++) {
       int sub=j;
       arma::vec xsub1(x1.n_rows),
@@ -218,8 +214,6 @@ arma::vec interep(arma::mat& e, arma::mat& z, arma::mat& y0, arma::vec& beta, do
       beta(i)=betanew(i);
     }
   }
-  //std::cout <<iter << std::endl;
-  //std::cout << diff << std::endl;
 
   return(betanew);
 }
