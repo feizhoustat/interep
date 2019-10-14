@@ -4,7 +4,7 @@
 \name{dat}
 \alias{dat}
 \title{simulated data for demonstrating the features of interep}
-\format{Each data consists of six components: e, z, x, y, beta and index; index shows the location of the true coefficients used to generate y.}
+\format{Each data consists of six components: e, z, x, y, coef and index; index shows the location of the true coefficients used to generate y.}
 \usage{
 data("dat")
 }
