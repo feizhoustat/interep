@@ -2,27 +2,25 @@
 #' @importFrom Rcpp sourceCpp
 NULL
 
-#' k-folds cross-validation for interep
+#' fit generalized estimaitng equations with given tuning parameters
 #'
-#' This function does k-fold cross-validation for interep and returns the optimal value of lambda.
+#' This function makes predictions for generalized estimating equation with a given value of lambda.
+#' Typical usage is to have the cv.interep function compute the optimal lambda, then provide it to
+#' the interep function.
+#' @importFrom stats gaussian
+#' @importFrom MASS ginv
 #' @param e matrix of environment factors.
 #' @param g matrix of omics factors. In the case study, the omics measurements are lipidomics data.
 #' @param y the longitudinal response.
-#' @param beta0 the intial value for the coefficient vector.
-#' @param lambda1 a user-supplied sequence of \eqn{\lambda_{1}} values, which serves as a tuning parameter for individual predictors.
-#' @param lambda2 a user-supplied sequence of \eqn{\lambda_{2}} values, which serves as a tuning parameter for interactions.
-#' @param nfolds the number of folds for cross-validation.
+#' @param beta0 the inital coefficient vector.
 #' @param corre the working correlation structure that is used in the estimation algorithm. interep provides three choices for the
 #' working correlation structure: "a" as AR-1", "i" as "independence" and "e" as "exchangeable".
 #' @param pmethod the penalization method. "mixed" refers to MCP penalty to individual main effects and group MCP penalty to interactions; "individual" means MCP penalty to all effects.
-#' @param maxits the maximum number of iterations that is used in the estimation algorithm.
-#' @details
-#' When dealing with predictors with both main effects and interactions, this function returns two optimal tuning parameters,
-#' \eqn{\lambda_{1}} and \eqn{\lambda_{2}}; when there are only main effects in the predictors, this function returns \eqn{\lambda_{1}},
-#' which is the optimal tuning parameter for individual predictors containing main effects.
-#' @return an object of class "cv.interep" is returned, which is a list with components:
-#' \item{lam1}{the optimal \eqn{\lambda_{1}}.}
-#' \item{lam2}{the optimal \eqn{\lambda_{2}}.}
+#' @param lam1 the tuning parameter lambda1 for individual predictors.
+#' @param lam2 the tuning parameter lambda2 for interactions.
+#' @param maxits the maximum number of iterations that is used in the estimation algorithm.  The default value is 30
+#' @return
+#' \item{coef}{the coefficient vector.}
 #' @references
 #' Zhou, F., Ren, J., Li, G., Jiang, Y., Li, X., Wang, W.and Wu, C. (2019). Penalized variable selection for Lipid--environment interactions in the longitudinal lipidomics study.
 #'
@@ -58,58 +56,66 @@ NULL
 #' Wu, C., Li, S., and Cui, Y. (2012). Genetic Association Studies: An Information Content Perspective.
 #' \href{https://doi.org/10.2174/138920212803251382}{\emph{Current Genomics}, 13(7),  566–573}
 #'
+#' @examples
+#' data("dat")
+#' e=dat$e
+#' g=dat$z
+#' y=dat$y
+#' beta0=dat$coef
+#' index=dat$index
+#' b = interep(e, g, y,beta0,corre="e",pmethod="mixed",lam1=dat$lam1, lam2=dat$lam2,maxits=30)
+#' b[abs(b)<0.05]=0
+#' pos = which(b != 0)
+#' tp = length(intersect(index, pos))
+#' fp = length(pos) - tp
+#' list(tp=tp, fp=fp)
+#'
 #' @export
 
-
-
-cv.interep <- function(e, g, y, beta0, lambda1, lambda2, nfolds, corre, pmethod, maxits){
-  n=dim(y)[1]
+interep <- function(e,g,y,beta0,corre,pmethod,lam1,lam2,maxits){
   q=dim(e)[2]
+  n=dim(y)[1]
+  k=dim(y)[2]
   p1=dim(g)[2]
-  len1=length(lambda1)
-  len2=length(lambda2)
 
-  folds=rep(1,n/nfolds)
-  for (i in 2:nfolds) {
-    folds=c(folds,rep(i,n/nfolds))
-  }
-  folds=sample(folds)
-  pred=matrix(0,len1,len2)
-  for (i in 1:len1) {
-    lam1=lambda1[i]
-    for (j in 1:len2){
-      lam2=lambda2[j]
-      mse=0
-      for (cv in 1:nfolds) {
-        #Segement your data by fold using the which() function
-        testIndexes <- which(folds==cv,arr.ind=TRUE)
-        e.test=e[testIndexes,]
-        g.test=g[testIndexes,]
-        y.test=y[testIndexes,]
-        e.train=e[-testIndexes,]
-        g.train=g[-testIndexes,]
-        y.train=y[-testIndexes,]
-        e.train=as.matrix(e.train)
-        g.train=as.matrix(g.train)
-        y.train=as.matrix(y.train)
-        beta=interep(e.train, g.train, y.train, beta0,corre,pmethod,lam1,lam2,maxits)
-        x.test=cbind(e.test,g.test)
-        for (i1 in 1:p1) {
-          for (j1 in 1:q) {
-            x.test=cbind(x.test,e.test[,j1]*g.test[,i1])
-          }
-        }
-        x.test=scale(x.test)
-        data.test=reformat(y.test, x.test)
-        x.test=data.test$x
-        y.test=data.test$y
-        mu=x.test%*%beta
-        mse=mse+mean((y.test-mu)^2)
-      }
-      pred[i,j]=mse/nfolds
+  x=cbind(e,g)
+  for (i in 1:p1) {
+    for (j in 1:q) {
+      x=cbind(x,e[,j]*g[,i])
     }
   }
-  lamb1=lambda1[which(pred==min(pred),arr.ind = TRUE)[1]]
-  lamb2=lambda2[which(pred==min(pred),arr.ind = TRUE)[2]]
-  return(list("lam1"=lamb1,"lam2"=lamb2))
+
+  x=scale(x)
+
+  #==========================================reformat the data===============================#
+  data=reformat(k,y,x)
+  y=data$y
+  x=data$x
+
+  p=dim(x)[2]
+  k=rep(k,n)
+
+  converge=F
+  iter=0
+  beta.new=beta0
+  #=========================================PQIF======================================#
+  while ((!converge) & (iter < maxits)) {
+    beta = beta.new
+    Score=ScoreU(n,k,y,x,p,beta,corre)
+    U=Score$U
+    dU=Score$dU
+
+    E=penalty(x,n,p,q,beta,lam1,pmethod,p1,lam2)
+
+    mat=dU + n*E
+    mat[abs(mat)<0.000001]=0
+    beta.new = beta + MASS::ginv(mat)%*%(U - n*E%*%beta)
+
+    diff=mean(abs(beta.new-beta))
+    converge = (diff < 1e-3)
+    iter = iter+1
+    cat("iter",iter,"diff",diff,"\n")
+  }
+  coef=beta.new
+  return(coef)
 }
