@@ -6,15 +6,14 @@ NULL
 #'
 #' This function does k-fold cross-validation for interep and returns the optimal value of lambda.
 #' @param e matrix of environment factors.
-#' @param g matrix of omics factors. In the case study, the omics measurements are lipidomics data.
+#' @param z matrix of omics factors. In the case study, the omics measurements are lipidomics data.
 #' @param y the longitudinal response.
-#' @param beta0 the intial value for the coefficient vector.
+#' @param beta the intial value for the coefficient vector.
 #' @param lambda1 a user-supplied sequence of \eqn{\lambda_{1}} values, which serves as a tuning parameter for individual predictors.
 #' @param lambda2 a user-supplied sequence of \eqn{\lambda_{2}} values, which serves as a tuning parameter for interactions.
 #' @param nfolds the number of folds for cross-validation.
 #' @param corre the working correlation structure that is used in the estimation algorithm. interep provides three choices for the
 #' working correlation structure: "a" as AR-1", "i" as "independence" and "e" as "exchangeable".
-#' @param pmethod the penalization method. "mixed" refers to MCP penalty to individual main effects and group MCP penalty to interactions; "individual" means MCP penalty to all effects.
 #' @param maxits the maximum number of iterations that is used in the estimation algorithm.
 #' @details
 #' When dealing with predictors with both main effects and interactions, this function returns two optimal tuning parameters,
@@ -24,48 +23,31 @@ NULL
 #' \item{lam1}{the optimal \eqn{\lambda_{1}}.}
 #' \item{lam2}{the optimal \eqn{\lambda_{2}}.}
 #' @references
-#' Zhou, F., Ren, J., Li, G., Jiang, Y., Li, X., Wang, W.and Wu, C. (2019). Penalized variable selection for Lipid--environment interactions in the longitudinal lipidomics study.
+#' Zhou, F., Ren, J., Li X., Wang, W., Jiang, Y. and Wu, C. (2018+). Variable selection for interactions in longitudinal lipidomics studies.
 #'
-#' Ren, J., Zhou, F., Li, X., Chen, Q., Zhang, H., Ma, S., Jiang,Y. and Wu, C. (2019). Semi-parametric Bayesian variable selection for Gene-Environment interactions.
+#' Wu, C., Zhong, P. & Cui, Y. (2018). Additive varying-coefficient model for nonlinear gene-environment interactions.
+#' \href{https://doi.org/10.1515/sagmb-2017-0008}{\emph{Statistical Applications in Genetics and Molecular Biology}, 17(2)}
 #'
-#' Wu, C., Zhou, F., Ren, J., Li, X., Jiang, Y., Ma, S. (2019). A Selective Review of Multi-Level Omics Data Integration Using Variable Selection.
-#' \href{https://doi.org/10.3390/ht8010004}{\emph{High-Throughput}, 8(1)}
-#'
-#' Wu, C., Zhong, P.-S., and Cui, Y. (2018). Additive varying-coefficient model for nonlinear gene-environment interactions.
-#' \href{https://doi.org/10.1515/sagmb-2017-0008}{\emph{ Statistical Applications in Genetics and Molecular Biology}, 17(2)}
-#'
-#' Wu, C., Jiang, Y., Ren, J., Cui, Y., Ma, S. (2018). Dissecting gene-environment interactions: A penalized robust approach accounting for hierarchical structures.
+#' Wu, C., Jiang, Y., Ren, J., Cui, Y. and Ma, S. (2018). Dissecting gene-environment interactions: a penalized robust approach accounting for hierarchical structures.
 #' \href{https://doi.org/10.1002/sim.7518}{\emph{Statistics in Medicine}, 37:437–456}
 #'
-#' Jiang, Y., Huang, Y., Du, Y., Zhao, Y., Ren, J., Ma, S., & Wu, C. (2017). Identification of prognostic genes and pathways in lung adenocarcinoma using a Bayesian approach.
-#' \href{https://www.researchgate.net/profile/Cen_Wu/publication/310828910_Identification_of_Prognostic_Genes_and_Pathways_in_Lung_Adenocarcinoma_Using_a_Bayesian_Approach/links/5cfbdac692851c874c5947f6/Identification-of-Prognostic-Genes-and-Pathways-in-Lung-Adenocarcinoma-Using-a-Bayesian-Approach.pdf}{\emph{Cancer Inform}, 1(7)}
-#'
-#' Wu, C., and Ma, S. (2015). A selective review of robust variable selection with applications in bioinformatics.
-#' \href{https://doi.org/10.1093/bib/bbu046}{\emph{Briefings in Bioinformatics}, 16(5), 873–883}
-#'
-#' Wu, C., Shi, X., Cui, Y. and Ma, S. (2015). A penalized robust semiparametric approach for gene-environment interactions.
+#' Wu, C., Shi, X., Cui, Y. and Ma, S. (2015) A penalized robust semiparametric approach for gene-environment interactions.
 #' \href{https://doi.org/10.1002/sim.6609}{\emph{Statistics in Medicine}, 34 (30): 4016–4030}
 #'
-#' Wu, C., Cui, Y., and Ma, S. (2014). Integrative analysis of gene–environment interactions under a multi–response partially linear varying coefficient model.
-#' \href{https://doi.org/10.1002/sim.6287}{\emph{Statistics in Medicine}, 33(28), 4988–4998}
+#' Wu, C., Cui, Y. and Ma, S. (2014) Integrative analysis of gene-environment interactions under a multi-response partially linear varying coefficient model.
+#' \href{https://doi.org/10.1002/sim.6287}{\emph{Statistics in Medicine}, 33 (28): 4988–4498}
 #'
-#' Wu, C. and Cui, Y. (2013). A novel method for identifying nonlinear gene–environment interactions in case–control association studies.
-#' \href{https://doi.org/10.1007/s00439-013-1350-z}{\emph{Human Genetics}, 132(12):1413–1425}
-#'
-#' Wu, C. and Cui, Y. (2013). Boosting signals in gene–based association studies via efficient SNP selection.
-#' \href{https://doi.org/10.1093/bib/bbs087}{\emph{Briefings in Bioinformatics}, 15(2):279–291}
-#'
-#' Wu, C., Li, S., and Cui, Y. (2012). Genetic Association Studies: An Information Content Perspective.
-#' \href{https://doi.org/10.2174/138920212803251382}{\emph{Current Genomics}, 13(7),  566–573}
+#' Wu, C. and Cui Y. (2013) A novel method for identifying nonlinear gene-environment interactions in case-control association studies.
+#' \href{https://doi.org/10.1007/s00439-013-1350-z}{\emph{Human Genetics}, 132 (12): 1413–1425}
 #'
 #' @export
 
 
 
-cv.interep <- function(e, g, y, beta0, lambda1, lambda2, nfolds, corre, pmethod, maxits){
+cv.interep <- function(e, z, y, beta, lambda1, lambda2, nfolds, corre, maxits){
   n=dim(y)[1]
   q=dim(e)[2]
-  p1=dim(g)[2]
+  p1=dim(z)[2]
   len1=length(lambda1)
   len2=length(lambda2)
 
@@ -84,19 +66,19 @@ cv.interep <- function(e, g, y, beta0, lambda1, lambda2, nfolds, corre, pmethod,
         #Segement your data by fold using the which() function
         testIndexes <- which(folds==cv,arr.ind=TRUE)
         e.test=e[testIndexes,]
-        g.test=g[testIndexes,]
+        z.test=z[testIndexes,]
         y.test=y[testIndexes,]
         e.train=e[-testIndexes,]
-        g.train=g[-testIndexes,]
+        z.train=z[-testIndexes,]
         y.train=y[-testIndexes,]
         e.train=as.matrix(e.train)
-        g.train=as.matrix(g.train)
+        z.train=as.matrix(z.train)
         y.train=as.matrix(y.train)
-        beta=interep(e.train, g.train, y.train, beta0,corre,pmethod,lam1,lam2,maxits)
-        x.test=cbind(e.test,g.test)
+        beta=interep(e.train, z.train, y.train, beta,lam1, lam2, corre, maxits)
+        x.test=cbind(e.test,z.test)
         for (i1 in 1:p1) {
           for (j1 in 1:q) {
-            x.test=cbind(x.test,e.test[,j1]*g.test[,i1])
+            x.test=cbind(x.test,e.test[,j1]*z.test[,i1])
           }
         }
         x.test=scale(x.test)
