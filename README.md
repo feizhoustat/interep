@@ -4,7 +4,6 @@
 # interep
 
 > **Inter**action Analysis of **Rep**eated Measure Data
-> Interactions
 
 <!-- badges: start -->
 
@@ -20,7 +19,7 @@ status](https://www.r-pkg.org/badges/version/interep)](https://CRAN.R-project.or
 coverage](https://codecov.io/gh/feizhoustat/interep/branch/master/graph/badge.svg)](https://codecov.io/gh/feizhoustat/interep?branch=master)
 <!-- badges: end -->
 
-Recently, regularized variable selection has emerged as a power tool to identify and dissect gene-environment interactions. Nevertheless, in longitudinal studies with high dimensional genetic factors, regularization methods for G×E interactions have not been systematically developed. In this package, we provide the implementation of sparse group variable selection, based on both the quadratic inference function (QIF) and generalized estimating equation (GEE), to accommodate the bi-level selection for longitudinal G$\times$E studies with high dimensional genomic features. Alternative methods conducting only the group or individual level selection have also been included. The core modules of the package have been developed in C++.
+Extensive penalized variable selection methods have been developed in the past two decades for analyzing high dimensional omics data, such as gene expressions, single nucleotide polymorphisms (SNPs), copy number variations (CNVs) and others. However, lipidomics data have been rarely investigated by using high dimensional variable selection methods. This package incorporates our recently developed penalization procedures to conduct interaction analysis for high dimensional lipidomics data with repeated measurements. The core module of this package is developed in C++. The development of this software package and the associated statistical methods have been partially supported by an Innovative Research Award from Johnson Cancer Research Center, Kansas State University.
 
 ## How to install
 
