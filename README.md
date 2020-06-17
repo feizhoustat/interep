@@ -32,9 +32,7 @@ Recently, regularized variable selection has emerged as a power tool to identify
 
     install.packages("interep")
 
-## Examples
-
-#### Example.1 (default method: robust sparse group selection)
+## Example
 
     library(interep)
     data("dat")
