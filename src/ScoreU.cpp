@@ -34,8 +34,8 @@ Rcpp::List ScoreU(int n, arma::vec& k, arma::vec& y, arma::mat& x, int p, arma::
       res(t)=y(t+index(i))-mu(t);
     }
     arma::mat V=Rhat.slice(i);
-    U+=D.t()*inv(V)*res;
-    qU+=D.t()*inv(V)*D;
+    U+=D.t()*pinv(V)*res;
+    qU+=D.t()*pinv(V)*D;
   }
 
   return Rcpp::List::create(Rcpp::Named("U") = U,
