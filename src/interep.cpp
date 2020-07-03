@@ -203,7 +203,9 @@ arma::vec interep(arma::mat& e, arma::mat& z, arma::mat& y0, arma::vec& beta, do
 
     for(int i=0; i<p; i++){
       for(int j=0; j<p; j++){
-        matr(i,j)=qU(i,j)+E(i,j)+0.001;
+        matr(i,j)=qU(i,j)+E(i,j);
+        if(j==i){
+          matr(i,j)=matr(i,j)+0.001;
       }
     }
 
