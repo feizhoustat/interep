@@ -210,7 +210,7 @@ arma::vec interep(arma::mat& e, arma::mat& z, arma::mat& y0, arma::vec& beta, do
       }
     }
 
-    betanew = beta + pinv(matr)*(U - W*beta);
+    betanew = beta + inv(matr)*(U - W*beta);
 
     diff=mean(abs(betanew-beta));
     if(diff < 0.001){
