@@ -206,6 +206,7 @@ arma::vec interep(arma::mat& e, arma::mat& z, arma::mat& y0, arma::vec& beta, do
         matr(i,j)=qU(i,j)+E(i,j);
         if(j==i){
           matr(i,j)=matr(i,j)+0.001;
+        }
       }
     }
 
