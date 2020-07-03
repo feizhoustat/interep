@@ -103,7 +103,7 @@ arma::vec interep(arma::mat& e, arma::mat& z, arma::mat& y0, arma::vec& beta, do
       a(j)=x0(j,i);
     }
     for(int j=0; j<n; j++){
-      x00(j,i)=(x0(j,i)-mean(a))/stddev(a);
+      x00(j,i)=(x0(j,i)-mean(a))/(stddev(a)+0.001);
     }
   }
   //reformat the data
