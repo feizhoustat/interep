@@ -43,59 +43,59 @@ which is the optimal tuning parameter for individual predictors containing main 
 }
 \references{
 Zhou, F., Ren, J., Li, G., Jiang, Y., Li, X., Wang, W.and Wu, C. (2019). Penalized variable selection for Lipid--environment interactions in a longitudinal lipidomics study.
-\href{https://www.mdpi.com/2073-4425/10/12/1002/htm}{\emph{Genes}, 10(12), 1002}
+\href{https://www.mdpi.com/2073-4425/10/12/1002}{\emph{Genes}, 10(12), 1002}
 
 Zhou, F., Ren, J., Liu, Y., Li, X., Wang, W.and Wu, C. (2022). Interep: An r package for high-dimensional interaction analysis of the repeated measurement data.
-\doi{10.3390/genes13030544}{\emph{Genes}, 13(3): 554}
+{\emph{Genes}, 13(3): 554} \doi{10.3390/genes13030544}
 
-Zhou, F., Ren, J., Lu, X., Ma, S. and Wu, C. (2020) Gene–Environment Interaction: a Variable Selection Perspective.
-\href{https://arxiv.org/abs/2003.02930}{\emph{Epistasis}, Methods in Molecular Biology. Humana Press. (Accepted)}
+Zhou, F., Ren, J., Lu, X., Ma, S. and Wu, C. (2021) Gene–Environment Interaction: a Variable Selection Perspective.
+\href{https://link.springer.com/protocol/10.1007/978-1-0716-0947-7_13}{\emph{Epistasis: Methods and Protocols}, 191-223} 
 
 Ren, J., Zhou, F., Li, X., Chen, Q., Zhang, H., Ma, S., Jiang,Y. and Wu, C. (2020). Semi-parametric Bayesian variable selection for Gene-Environment interactions.
-\doi{10.1002/sim.8434}{\emph{Statistics in Medicine}, 39(5): 617–638}
+{\emph{Statistics in Medicine}, 39(5): 617-638} \doi{10.1002/sim.8434}
 
 Wu, C., Zhou, F., Ren, J., Li, X., Jiang, Y., Ma, S. (2019). A Selective Review of Multi-Level Omics Data Integration Using Variable Selection.
-\doi{10.3390/ht8010004}{\emph{High-Throughput}, 8(1)}
+{\emph{High-Throughput}, 8(1)} \doi{10.3390/ht8010004}
 
 Ren, J., Du, Y., Li, S., Ma, S., Jiang, Y. and Wu, C. (2019). Robust network-based regularization and variable selection for high-dimensional genomic data in cancer prognosis.
-\doi{10.1002/gepi.22194}{\emph{Genetic epidemiology}, 43(3), 276-291}
+{\emph{Genetic epidemiology}, 43(3), 276-291} \doi{10.1002/gepi.22194}
 
 Ren, J., Jung, L., Du, Y., Wu, C., Jiang, Y. and Liu, J. (2019). regnet: Network-Based Regularization for Generalized Linear Models.
 \href{https://cran.r-project.org/package=regnet}{\emph{R package}, version 0.4.0}
 
 Wu, C., Zhang, Q., Jiang, Y. and Ma, S. (2018). Robust network-based analysis of the associations between (epi) genetic measurements.
-\doi{10.1016/j.jmva.2018.06.009}{\emph{Journal of multivariate analysis}, 168, 119-130}
+{\emph{Journal of multivariate analysis}, 168, 119-130} \doi{10.1016/j.jmva.2018.06.009}
 
 Wu, C., Zhong, P.-S., and Cui, Y. (2018). Additive varying-coefficient model for nonlinear gene-environment interactions.
-\doi{10.1515/sagmb-2017-0008}{\emph{ Statistical Applications in Genetics and Molecular Biology}, 17(2)}
+{\emph{ Statistical Applications in Genetics and Molecular Biology}, 17(2)} \doi{10.1515/sagmb-2017-0008}
 
 Wu, C., Jiang, Y., Ren, J., Cui, Y., Ma, S. (2018). Dissecting gene-environment interactions: A penalized robust approach accounting for hierarchical structures.
-\doi{10.1002/sim.7518}{\emph{Statistics in Medicine}, 37: 437–456}
+{\emph{Statistics in Medicine}, 37: 437–456} \doi{10.1002/sim.7518}
 
 Ren, J., He, T., Li, Y., Liu, S., Du, Y., Jiang, Y. and Wu, C. (2017). Network-based regularization for high dimensional SNP data in the case–control study of Type 2 diabetes.
-\doi{10.1186/s12863-017-0495-5}{\emph{BMC genetics}, 18(1), 44}
+{\emph{BMC genetics}, 18(1), 44} \doi{10.1186/s12863-017-0495-5}
 
 Jiang, Y., Huang, Y., Du, Y., Zhao, Y., Ren, J., Ma, S., & Wu, C. (2017). Identification of prognostic genes and pathways in lung adenocarcinoma using a Bayesian approach.
-\doi{10.1177/1176935116684825}{\emph{Cancer Inform}, 1(7)}
+{\emph{Cancer Inform}, 1(7)} \doi{10.1177/1176935116684825}
 
 Wu, C., and Ma, S. (2015). A selective review of robust variable selection with applications in bioinformatics.
-\doi{10.1093/bib/bbu046}{\emph{Briefings in Bioinformatics}, 16(5), 873–883}
+{\emph{Briefings in Bioinformatics}, 16(5), 873–883} \doi{10.1093/bib/bbu046}
 
 Wu, C., Shi, X., Cui, Y. and Ma, S. (2015). A penalized robust semiparametric approach for gene-environment interactions.
-\doi{10.1002/sim.6609}{\emph{Statistics in Medicine}, 34 (30): 4016–4030}
+{\emph{Statistics in Medicine}, 34 (30): 4016–4030} \doi{10.1002/sim.6609}
 
 Wu, C., Cui, Y., and Ma, S. (2014). Integrative analysis of gene–environment interactions under a multi–response partially linear varying coefficient model.
-\doi{10.1002/sim.6287}{\emph{Statistics in Medicine}, 33(28), 4988–4998}
+{\emph{Statistics in Medicine}, 33(28), 4988–4998} \doi{10.1002/sim.6287}
 
 Wu, C. and Cui, Y. (2013). A novel method for identifying nonlinear gene–environment interactions in case–control association studies.
-\doi{10.1007/s00439-013-1350-z}{\emph{Human Genetics}, 132(12):1413–1425}
+{\emph{Human Genetics}, 132(12):1413–1425} \doi{10.1007/s00439-013-1350-z}
 
 Wu, C. and Cui, Y. (2013). Boosting signals in gene–based association studies via efficient SNP selection.
-\doi{10.1093/bib/bbs087}{\emph{Briefings in Bioinformatics}, 15(2):279–291}
+{\emph{Briefings in Bioinformatics}, 15(2):279–291} \doi{10.1093/bib/bbs087}
 
 Wu, C., Zhong, P.S. and Cui, Y. (2013). High dimensional variable selection for gene-environment interactions.
 \href{https://www.stt.msu.edu/Links/Research_Memoranda/RM/RM_701.pdf}{\emph{Technical Report}, Michigan State University.}
 
 Wu, C., Li, S., and Cui, Y. (2012). Genetic Association Studies: An Information Content Perspective.
-\doi{10.2174/138920212803251382}{\emph{Current Genomics}, 13(7),  566–573}
+{\emph{Current Genomics}, 13(7),  566–573} \doi{10.2174/138920212803251382}
 }

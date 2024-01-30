@@ -1,3 +1,6 @@
+# interep 0.4.1 (2024-01-26)
+ * Fixed minors and errors.
+
 # interep 0.4.0 (2023-09-04)
  * Fixed minors and errors.
  * Updated source functions and examples.

@@ -34,14 +34,14 @@ dmcp(theta,lambda,gamma=3)
 }
 \references{
 Ren, J., Du, Y., Li, S., Ma, S., Jiang, Y. and Wu, C. (2019). Robust network-based regularization and variable selection for high-dimensional genomic data in cancer prognosis.
-\doi{10.1002/gepi.22194}{\emph{Genetic epidemiology}, 43(3), 276-291}
+{\emph{Genetic epidemiology}, 43(3), 276-291} \doi{10.1002/gepi.22194}
 
 Ren, J., Jung, L., Du, Y., Wu, C., Jiang, Y. and Liu, J. (2019). regnet: Network-Based Regularization for Generalized Linear Models.
 \href{https://cran.r-project.org/package=regnet}{\emph{R package}, version 0.4.0}
 
 Wu, C., Zhang, Q., Jiang, Y. and Ma, S. (2018). Robust network-based analysis of the associations between (epi) genetic measurements.
-\doi{10.1016/j.jmva.2018.06.009}{\emph{Journal of multivariate analysis}, 168, 119-130}
+{\emph{Journal of multivariate analysis}, 168, 119-130} \doi{10.1016/j.jmva.2018.06.009}
 
 Ren, J., He, T., Li, Y., Liu, S., Du, Y., Jiang, Y. and Wu, C. (2017). Network-based regularization for high dimensional SNP data in the case–control study of Type 2 diabetes.
-\doi{10.1186/s12863-017-0495-5}{\emph{BMC genetics}, 18(1), 44}
+{\emph{BMC genetics}, 18(1), 44} \doi{10.1186/s12863-017-0495-5}
 }
